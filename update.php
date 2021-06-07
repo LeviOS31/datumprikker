@@ -22,7 +22,6 @@ if($stmt->execute()){
             $array[] = [$naam => $beschikbaarheid[$i]];
             $x_value = array_merge($x_value, $array[$i]);
             $resultaat[] = $x_value;
-            echo "<br><br><br>";
             $i++;
         }
 
@@ -37,9 +36,9 @@ if($stmt->execute()){
         for($i = 2; $i < count($arr); $i++){
             $send = array_merge($send, $arr[$i]);
         }
-        var_dump($send);
         $stmt = $mysql->prepare("UPDATE datums SET datums = ? WHERE id = ?");
         $stmt->bind_param("ss", serialize($send), $id);
         $stmt->execute();
+        header("Location:overzicht.php?id=" . $_GET['id']);
     }   
 }
