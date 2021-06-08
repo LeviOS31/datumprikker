@@ -37,7 +37,9 @@
     ?>
 
     <br><br>
-    <a href="beschikbaarheid.php?id=<?php echo $_GET["id"] ?>"><button>beschikbaarheid invullen</button></a>
+    <a href="beschikbaarheid.php?id=<?php echo $id; ?>"><button>beschikbaarheid invullen</button></a>
+    <br>
+    <p>wil je dat anderen ook hun beschikbaarheid kunnen invullen <button onclick="copyToClipboard('localhost/datumprikker/overzicht.php?id=<? echo $id; ?>')">klik hier!</button></p>
     <br>
     <?php
     $stmt = $mysql->prepare("SELECT * FROM datums WHERE id = ?");
@@ -57,5 +59,10 @@
         }   
     }
     ?>
+    <script>
+    function copyToClipboard(text) {
+        window.prompt("kopieer naar clipboard: Ctrl+C, Enter", text);
+    }
+    </script>
 </body>
 </html>
