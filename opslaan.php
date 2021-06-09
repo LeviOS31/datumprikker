@@ -3,7 +3,7 @@ require_once("DBconnectie.php");
 $conn = new DBconnectie;
 $mysql = $conn->getConnection();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(!empty($_POST["naam"])){
+    if(!empty($_POST["naam"]) || !empty($_POST["date"])){
         $naam = [htmlspecialchars($_POST["naam"]) => "ik kan"];
         $replace = $_POST["date"];
         $send = array_flip($replace);

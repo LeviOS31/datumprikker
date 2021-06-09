@@ -4,14 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="datums.css">
+        <link rel="stylesheet" href="standart.css">
         <title>datums kiezen</title>
     </head>
     <body>
+        <header>
         <h1>Welke datums wilt u voorstellen</h1>
+        </header>
+        <br>
+        <br>
         <form action="opslaan.php?id=<?php echo $_GET["id"] ?>" method="POST">
             <input type="text" name="naam" placeholder="naam">
             <div id="flex">
-                <div>
+                <div id="first">
                     <h3>januari</h3>
                     <div id="grid">
                         <div>

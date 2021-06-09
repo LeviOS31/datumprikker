@@ -1,6 +1,6 @@
 <?php
+session_start();
 if(!empty($_SESSION["naam"])){
-    session_start();
     require_once("DBconnectie.php");
 
     $conn = new DBconnectie;
@@ -9,7 +9,6 @@ if(!empty($_SESSION["naam"])){
     $beschikbaarheid = $_SESSION["beschikbaar"];
     $naam = $_SESSION["naam"];
     //var_dump($beschikbaarheid);
-    session_destroy();
     $id = htmlspecialchars($_GET["id"]);
     $stmt = $mysql->prepare("SELECT * FROM datums WHERE id = ?");
     $stmt->bind_param("s", $id);
@@ -40,9 +39,10 @@ if(!empty($_SESSION["naam"])){
             $stmt = $mysql->prepare("UPDATE datums SET datums = ? WHERE id = ?");
             $stmt->bind_param("ss", serialize($send), $id);
             $stmt->execute();
+            session_destroy();
             header("Location:overzicht.php?id=" . $id);
         }   
     }
 }else{
-    header("Location:beschikbaarheid.php?id=" . htmlspecialchars($_GET['id']));
+    //header("Location:beschikbaarheid.php?id=" . htmlspecialchars($_GET['id']));
 }
