@@ -7,7 +7,7 @@ if(!empty($_SESSION["naam"])){
     $mysql = $conn->getConnection();
 
     $beschikbaarheid = $_SESSION["beschikbaar"];
-    $naam = $_SESSION["naam"];
+    $naam = htmlspecialchars($_SESSION["naam"]);
     //var_dump($beschikbaarheid);
     $id = htmlspecialchars($_GET["id"]);
     $stmt = $mysql->prepare("SELECT * FROM datums WHERE id = ?");

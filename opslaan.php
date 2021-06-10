@@ -11,15 +11,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         {
             $send[$replace[$i]] = $naam;
         }
+        $id = htmlspecialchars($_GET["id"]);
         $arr = serialize($send);
         $stmt = $mysql->prepare("UPDATE datums SET datums = ? WHERE id = ?");
-        $stmt->bind_param("ss", $arr, $_GET["id"]);
+        $stmt->bind_param("ss", $arr, $id);
         if($stmt->execute()){
-            header("Location:overzicht.php?id=" . $_GET['id']);
+            header("Location:overzicht.php?id=" . $id);
         }else{
             echo $conn->getError();
         }                                           
     }else{
-        header("Refresh:5;url=datums.php?id=" . $_GET['id']);
+        header("Refresh:5;url=datums.php?id=" . $id);
     } 
 }

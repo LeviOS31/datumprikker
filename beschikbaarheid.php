@@ -5,8 +5,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     for($i = 0; $i < $count; $i++){
         $_SESSION["beschikbaar"][] = $_POST["beschikbaar" . $i];
     }
-    $_SESSION["naam"] = $_POST["naam"];
-    header("Location:update.php?id=" . $_GET["id"]);
+    $_SESSION["naam"] = htmlspecialchars($_POST["naam"]);
+    header("Location:update.php?id=" . htmlspecialchars($_GET["id"]));
 }
 ?>
 <!DOCTYPE html>
