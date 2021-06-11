@@ -59,14 +59,14 @@ input[type=submit]:hover{
     background-color: gray;
 }
 
-#flex > div:not(#first){
+#flex > div:not(div:first-child){
     background-color: white;
     padding-right: 25px;
     padding-left: 15px;
     margin-left: 3px;
 }
 
-#first{
+#flex > div:first-child{
     background-color: white;
     padding-right: 25px;
     padding-left: 15px;
